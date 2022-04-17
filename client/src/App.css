@@ -1,6 +1,13 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Source Code Pro";
+}
+
+@font-face {
+  font-family: "Source Code Pro";
+  src: local("SourceCodePro-VariableFont_wght"), url(../public/SourceCodePro-VariableFont_wght.ttf) format("truetype");
+  font-weight: bold;
 }
 
 #header {
@@ -15,21 +22,15 @@
   flex-direction: row;
 }
 
-#calculator {
-  background-color: lightslategray;
-  height: 90vh;
-  width: 67%;
-}
-
 #result {
   background-color: cornflowerblue;
   height: 90vh;
   width: 33%;
 }
 
-.matrix {
+.matrices {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   margin-top: 100px;
 }
@@ -43,7 +44,7 @@
   height: 50px;
   width: 50px;
   background-color: rgb(84, 112, 140);
-  border-style: solid;
+  border-style: none;
   border-width: 1px;
   display: flex;
   align-items: center;
@@ -62,5 +63,5 @@
 
 .matrix-cell-input:focus {
   outline-width: 0;
-  background-color: rgb(120,140,133);
+  background-color: rgb(120, 140, 133);
 }
