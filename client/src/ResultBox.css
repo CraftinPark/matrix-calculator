@@ -1,0 +1,5 @@
+.result-box {
+  background-color: cornflowerblue;
+  display: flex;
+  flex-direction: row;
+}

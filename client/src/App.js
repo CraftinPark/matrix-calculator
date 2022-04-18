@@ -1,21 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import AdditionCalculator from "./operators/AdditionCalculator";
+import ResultBox from "./ResultBox";
+import Matrix from "./operators/Matrix";
 
 // TODO:
-// edge cases for adding/removing dimensions
+// edge cases for adding/removing dimensions - done
 // operations
-// abstraction and better code practice
+// abstraction and better code practice - partway
+// MATRIX INPUT INTERPRETER...
 
 function App() {
   const [operator, setOperator] = useState("addition");
-  const [result, setResult] = useState([[0,0,0],[0,0,0],[0,0,0]]);
-  
+  const [result, setResult] = useState({
+    rows: 3,
+    columns: 3,
+    matrix: [
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0],
+    ],
+  });
 
   function renderSelectedCalculator() {
     switch (operator) {
       case "addition":
-        return <AdditionCalculator className="calculator"></AdditionCalculator>;
+        return <AdditionCalculator className="calculator" setResult={setResult}></AdditionCalculator>;
       case "subtraction":
         break;
       case "scalar-multiplication":
@@ -24,6 +34,10 @@ function App() {
         break;
     }
   }
+
+  useEffect(() => {
+    console.log(result);
+  });
 
   return (
     <div>
@@ -38,7 +52,9 @@ function App() {
       </div>
       <div id="app">
         {renderSelectedCalculator()}
-        <div id="result">result</div>
+        <div id="result">
+          <ResultBox result={result} setResult={setResult}></ResultBox>
+        </div>
       </div>
     </div>
   );
