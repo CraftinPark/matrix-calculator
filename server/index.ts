@@ -46,6 +46,8 @@ export default class Server {
     this.app.post("/add", this.addHandler);
     this.app.post("/subtract", this.subtractHandler);
     this.app.post("/scalar-multiply", this.scalarMultiplyHandler);
+    this.app.post("/matrix-multiply", this.matrixMultiplyHandler);
+    this.app.post("/transpose", this.transposeHandler);
   }
 
   private addHandler(req: Request, res: Response) {
@@ -72,6 +74,26 @@ export default class Server {
     try {
       let matrixCalculator = new MatrixCalculator();
       let result = matrixCalculator.scalar_multiply(req.body.matrices[0], req.body.scalar);
+      res.status(200).send(result);
+    } catch (err) {
+      res.status(400).json({ error: err });
+    }
+  }
+
+  private matrixMultiplyHandler(req: Request, res: Response) {
+    try {
+      let matrixCalculator = new MatrixCalculator();
+      let result = matrixCalculator.multiply(req.body.matrices[0], req.body.matrices[1]);
+      res.status(200).send(result);
+    } catch (err) {
+      res.status(400).json({ error: err });
+    }
+  }
+
+  private transposeHandler(req: Request, res: Response) {
+    try {
+      let matrixCalculator = new MatrixCalculator();
+      let result = matrixCalculator.transpose(req.body.matrices[0]);
       res.status(200).send(result);
     } catch (err) {
       res.status(400).json({ error: err });

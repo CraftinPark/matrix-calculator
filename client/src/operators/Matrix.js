@@ -23,7 +23,7 @@ export default function Matrix({ matrices, matrixNumber, setMatrices, type }) {
       {matrices[matrixNumber].matrix.map((row, r) => {
         return (
           <div className="matrix-row" key={`cells[${r}]`}>
-            {row.map((element, c) => {
+            {row.map((column, c) => {
               return (
                 <div
                   className="matrix-cell"

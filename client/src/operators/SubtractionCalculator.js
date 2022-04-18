@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Matrix from "./Matrix.js";
 import { modifyMatrices } from "./CalculatorHelpers.js";
+import ToolBar from "./ToolBar.js";
 import "./calculators.css";
 
 export default function SubtractionCalculator({ setResult }) {
@@ -35,7 +36,7 @@ export default function SubtractionCalculator({ setResult }) {
       .catch((error) => {
         console.log(error.response);
       });
-  }, [matrices]);
+  }, [matrices, setResult]);
 
   return (
     <div className="calculator">
@@ -44,29 +45,13 @@ export default function SubtractionCalculator({ setResult }) {
         <p className="operator-symbol">-</p>
         <Matrix matrices={matrices} matrixNumber={1} setMatrices={setMatrices}></Matrix>
       </div>
-      <div className="tools">
-        <div className="row-tools">
-          <div className="row-label">m = {matrices[0].rows}</div>
-          <button className="add-row-button" onClick={() => modifyMatrices("rows", "add", matrices, setMatrices)}>
-            Add Row
-          </button>
-          <button className="remove-row-button" onClick={() => modifyMatrices("rows", "sub", matrices, setMatrices)}>
-            Remove Row
-          </button>
-        </div>
-        <div className="column-tools">
-          <div className="column-label">n = {matrices[0].columns}</div>
-          <button className="add-column-button" onClick={() => modifyMatrices("columns", "add", matrices, setMatrices)}>
-            Add Column
-          </button>
-          <button
-            className="remove-column-button"
-            onClick={() => modifyMatrices("columns", "sub", matrices, setMatrices)}
-          >
-            Remove Column
-          </button>
-        </div>
-      </div>
+      <ToolBar
+        matrix={matrices[0]}
+        addRow={() => modifyMatrices("rows", "add", [0, 1], matrices, setMatrices)}
+        subRow={() => modifyMatrices("rows", "sub", [0, 1], matrices, setMatrices)}
+        addColumn={() => modifyMatrices("columns", "add", [0, 1], matrices, setMatrices)}
+        subColumn={() => modifyMatrices("columns", "sub", [0, 1], matrices, setMatrices)}
+      ></ToolBar>
     </div>
   );
 }

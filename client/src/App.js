@@ -1,17 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import AdditionCalculator from "./operators/AdditionCalculator";
 import SubtractionCalculator from "./operators/SubtractionCalculator";
 import ScalarMultiplicationCalculator from "./operators/ScalarMultiplicationCalculator";
+import MatrixMultiplicationCalculator from "./operators/MatrixMultiplicationCalculator";
+import TranspositionCalculator from "./operators/TranspositionCalculator";
 import ResultBox from "./ResultBox";
-import Matrix from "./operators/Matrix";
 
 // TODO:
 // edge cases for adding/removing dimensions - done
 // operations
 // abstraction and better code practice - partway
-// MATRIX INPUT INTERPRETER...
+// MATRIX INPUT INTERPRETER... (handles much bigger matrices)
 // negative number inputting is troublesome.
+// copy result as text
+
+// IMMEDIATE:
+// matrix multiplication first matrix dimensions labels revert to 3x3
+// finish button implementation for matrix multiplication - done
+// abstract tools into a component - done
 
 function App() {
   const [operator, setOperator] = useState("addition");
@@ -34,26 +41,49 @@ function App() {
       case "scalar-multiplication":
         return <ScalarMultiplicationCalculator setResult={setResult}></ScalarMultiplicationCalculator>;
       case "matrix-multiplication":
-        break;
+        return <MatrixMultiplicationCalculator setResult={setResult}></MatrixMultiplicationCalculator>;
       case "transposition":
+        return <TranspositionCalculator setResult={setResult}></TranspositionCalculator>;
+      default:
         break;
     }
   }
 
-  useEffect(() => {
-    console.log(result);
-  });
-
   return (
     <div>
       <div id="header">
-        <h1>Matrix Calculator</h1>
+        <h1 id="header-title">Matrix Calculator</h1>
         <div className="operator-selectors">
-          <button onClick={() => setOperator("addition")}>Addition</button>
-          <button onClick={() => setOperator("subtraction")}>Subtraction</button>
-          <button onClick={() => setOperator("scalar-multiplication")}>Scalar Multiplication</button>
-          <button onClick={() => setOperator("matrix-multiplication")}>Matrix Multiplication</button>
-          <button onClick={() => setOperator("transposition")}>Transposition</button>
+          <button
+            className={operator === "addition" ? "operator-selector-active" : "operator-selector"}
+            onClick={() => setOperator("addition")}
+          >
+            Addition
+          </button>
+          <button
+            className={operator === "subtraction" ? "operator-selector-active" : "operator-selector"}
+            onClick={() => setOperator("subtraction")}
+          >
+            Subtraction
+          </button>
+          <button
+            className={operator === "scalar-multiplication" ? "operator-selector-active" : "operator-selector"}
+            onClick={() => setOperator("scalar-multiplication")}
+          >
+            Scalar Multiplication
+          </button>
+          <button
+            className={operator === "matrix-multiplication" ? "operator-selector-active" : "operator-selector"}
+            onClick={() => setOperator("matrix-multiplication")}
+          >
+            Matrix Multiplication
+          </button>
+          <button
+            className={operator === "transposition" ? "operator-selector-active" : "operator-selector"}
+            onClick={() => setOperator("transposition")}
+          >
+            Transposition
+          </button>
         </div>
       </div>
       <div id="app">

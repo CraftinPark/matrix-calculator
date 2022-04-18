@@ -4,18 +4,10 @@ import Matrix from "./Matrix.js";
 import { modifyMatrices } from "./CalculatorHelpers.js";
 import ToolBar from "./ToolBar.js";
 import "./calculators.css";
+import "./Matrix.css";
 
-export default function AdditionCalculator({ setResult }) {
+export default function SubtractionCalculator({ setResult }) {
   const [matrices, setMatrices] = useState([
-    {
-      rows: 3,
-      columns: 3,
-      matrix: [
-        [0, 0, 0],
-        [0, 0, 0],
-        [0, 0, 0],
-      ],
-    },
     {
       rows: 3,
       columns: 3,
@@ -29,7 +21,7 @@ export default function AdditionCalculator({ setResult }) {
 
   useEffect(() => {
     axios
-      .post("http://localhost:9000/add", { matrices })
+      .post("http://localhost:9000/transpose", { matrices })
       .then((response) => {
         setResult(response.data);
       })
@@ -42,8 +34,6 @@ export default function AdditionCalculator({ setResult }) {
     <div className="calculator">
       <div className="matrices">
         <Matrix matrices={matrices} matrixNumber={0} setMatrices={setMatrices}></Matrix>
-        <p className="operator-symbol">+</p>
-        <Matrix matrices={matrices} matrixNumber={1} setMatrices={setMatrices}></Matrix>
       </div>
       <ToolBar
         matrix={matrices[0]}
