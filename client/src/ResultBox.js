@@ -5,7 +5,9 @@ import "./ResultBox.css";
 export default function ResultBox(props) {
   return (
     <div className="result-box">
-      <Matrix matrices={[props.result]} matrixNumber={0} setMatrices={props.setResult}></Matrix>
+      <div className="matrices">
+        <Matrix matrices={[props.result]} matrixNumber={0} setMatrices={props.setResult} type="result"></Matrix>
+      </div>
     </div>
   );
 }

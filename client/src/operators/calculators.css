@@ -1,19 +1,27 @@
 .calculator {
-  background-color: lightslategray;
+  background-color: #273c75;
   height: 90vh;
   width: 67%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+.matrices {
+  display: flex;
+  flex-direction: row;
+  height: 80%;
+}
+
 .operator-symbol {
   font-size: 100px;
+  color: white;
+  margin: 20px;
 }
 
 .tools {
-  margin-top: 20px;
+  height: 20%;
 }
 
 .row-tools {

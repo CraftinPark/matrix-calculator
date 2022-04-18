@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import AdditionCalculator from "./operators/AdditionCalculator";
+import SubtractionCalculator from "./operators/SubtractionCalculator";
+import ScalarMultiplicationCalculator from "./operators/ScalarMultiplicationCalculator";
 import ResultBox from "./ResultBox";
 import Matrix from "./operators/Matrix";
 
@@ -9,6 +11,7 @@ import Matrix from "./operators/Matrix";
 // operations
 // abstraction and better code practice - partway
 // MATRIX INPUT INTERPRETER...
+// negative number inputting is troublesome.
 
 function App() {
   const [operator, setOperator] = useState("addition");
@@ -25,12 +28,14 @@ function App() {
   function renderSelectedCalculator() {
     switch (operator) {
       case "addition":
-        return <AdditionCalculator className="calculator" setResult={setResult}></AdditionCalculator>;
+        return <AdditionCalculator setResult={setResult}></AdditionCalculator>;
       case "subtraction":
-        break;
+        return <SubtractionCalculator setResult={setResult}></SubtractionCalculator>;
       case "scalar-multiplication":
-        break;
+        return <ScalarMultiplicationCalculator setResult={setResult}></ScalarMultiplicationCalculator>;
       case "matrix-multiplication":
+        break;
+      case "transposition":
         break;
     }
   }
@@ -48,13 +53,12 @@ function App() {
           <button onClick={() => setOperator("subtraction")}>Subtraction</button>
           <button onClick={() => setOperator("scalar-multiplication")}>Scalar Multiplication</button>
           <button onClick={() => setOperator("matrix-multiplication")}>Matrix Multiplication</button>
+          <button onClick={() => setOperator("transposition")}>Transposition</button>
         </div>
       </div>
       <div id="app">
         {renderSelectedCalculator()}
-        <div id="result">
-          <ResultBox result={result} setResult={setResult}></ResultBox>
-        </div>
+        <ResultBox result={result} setResult={setResult}></ResultBox>
       </div>
     </div>
   );

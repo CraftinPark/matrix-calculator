@@ -3,14 +3,14 @@
   flex-direction: column;
   align-items: center;
   border-style: solid;
-  border-color: rgb(84, 112, 140)
+  border-color: #fbc531;
+  border-radius: 5px;
 }
 
 .matrices {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 100px;
 }
 
 .matrix-row {
@@ -21,7 +21,7 @@
 .matrix-cell {
   height: 30px;
   width: 30px;
-  background-color: rgb(84, 112, 140);
+  background-color: #fbc531;
   border-style: none;
   border-width: 1px;
   display: flex;
@@ -36,10 +36,10 @@
   color: white;
   border-style: none;
   border-radius: 5px;
-  background-color: rgb(70, 97, 125);
+  background-color: #e1b12c;
 }
 
 .matrix-cell-input:focus {
   outline-width: 0;
-  background-color: rgb(120, 140, 133);
+  background-color: #ffe08b;
 }
