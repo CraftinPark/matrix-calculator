@@ -1,3 +1,9 @@
+#root {
+  height: 100vh;
+  width: 100%;
+  background-color: #676767;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,6 +12,12 @@
 
 @font-face {
   font-family: "Source Code Pro";
+  src: local("SourceCodePro-VariableFont_wght"), url(../public/SourceCodePro-VariableFont_wght.ttf) format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Source Code Pro Bold";
   src: local("SourceCodePro-VariableFont_wght"), url(../public/SourceCodePro-VariableFont_wght.ttf) format("truetype");
   font-weight: bold;
 }
@@ -17,11 +29,47 @@
 }
 
 #header {
-  background-color: #dcdde1;
+  position: fixed;
   height: 80px;
+  width: 100%;
   text-align: center;
   font-family: "Rubik";
   color: #e84118;
+  display: flex;
+  flex-direction: row;
+}
+
+.calculator-header {
+  background-color: #dcdde1;
+  height: 100%;
+  width: 67%;
+}
+
+.credit-header {
+  background-color: #818797;
+  height: 100%;
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+}
+
+#credit-title {
+  font-family: "Source Code Pro Bold";
+  font-weight: bold;
+  font-size: 15px;
+  color: black;
+  text-align: right;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+#github {
+  font-family: "Rubik";
+  font-size: 13px;
+  text-align: right;
+  margin-top: 5px;
+  margin-right: 10px;
 }
 
 #header-title {
@@ -31,7 +79,8 @@
 
 #app {
   display: flex;
-  flex-direction: row;
+  height: 100vh;
+  flex: 1 1 auto;
 }
 
 .operator-selectors {

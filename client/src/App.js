@@ -52,40 +52,49 @@ function App() {
   return (
     <div>
       <div id="header">
-        <h1 id="header-title">Matrix Calculator</h1>
-        <div className="operator-selectors">
-          <button
-            className={operator === "addition" ? "operator-selector-active" : "operator-selector"}
-            onClick={() => setOperator("addition")}
-          >
-            Addition
-          </button>
-          <button
-            className={operator === "subtraction" ? "operator-selector-active" : "operator-selector"}
-            onClick={() => setOperator("subtraction")}
-          >
-            Subtraction
-          </button>
-          <button
-            className={operator === "scalar-multiplication" ? "operator-selector-active" : "operator-selector"}
-            onClick={() => setOperator("scalar-multiplication")}
-          >
-            Scalar Multiplication
-          </button>
-          <button
-            className={operator === "matrix-multiplication" ? "operator-selector-active" : "operator-selector"}
-            onClick={() => setOperator("matrix-multiplication")}
-          >
-            Matrix Multiplication
-          </button>
-          <button
-            className={operator === "transposition" ? "operator-selector-active" : "operator-selector"}
-            onClick={() => setOperator("transposition")}
-          >
-            Transposition
-          </button>
+        <div className="calculator-header">
+          <h1 id="header-title">Matrix Calculator</h1>
+          <div className="operator-selectors">
+            <button
+              className={operator === "addition" ? "operator-selector-active" : "operator-selector"}
+              onClick={() => setOperator("addition")}
+            >
+              Addition
+            </button>
+            <button
+              className={operator === "subtraction" ? "operator-selector-active" : "operator-selector"}
+              onClick={() => setOperator("subtraction")}
+            >
+              Subtraction
+            </button>
+            <button
+              className={operator === "scalar-multiplication" ? "operator-selector-active" : "operator-selector"}
+              onClick={() => setOperator("scalar-multiplication")}
+            >
+              Scalar Multiplication
+            </button>
+            <button
+              className={operator === "matrix-multiplication" ? "operator-selector-active" : "operator-selector"}
+              onClick={() => setOperator("matrix-multiplication")}
+            >
+              Matrix Multiplication
+            </button>
+            <button
+              className={operator === "transposition" ? "operator-selector-active" : "operator-selector"}
+              onClick={() => setOperator("transposition")}
+            >
+              Transposition
+            </button>
+          </div>
+        </div>
+        <div className="credit-header">
+          <h2 id="credit-title">created by CraftinPark</h2>
+          <a id="github" href="https://github.com/CraftinPark/matrix-calculator">
+            https://github.com/CraftinPark/matrix-calculator
+          </a>
         </div>
       </div>
+
       <div id="app">
         {renderSelectedCalculator()}
         <ResultBox result={result} setResult={setResult}></ResultBox>
