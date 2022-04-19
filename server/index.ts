@@ -43,6 +43,9 @@ export default class Server {
   }
 
   private registerRoutes() {
+    this.app.get("/", (req: Request, res: Response) => {
+      res.send("./../client/public/index.html");
+    });
     this.app.post("/add", this.addHandler);
     this.app.post("/subtract", this.subtractHandler);
     this.app.post("/scalar-multiply", this.scalarMultiplyHandler);
