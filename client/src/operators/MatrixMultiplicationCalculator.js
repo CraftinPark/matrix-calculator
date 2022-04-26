@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Matrix from "./Matrix.js";
+import Matrix from "./Matrix";
 import { modifyMatrices, multiplicationModifier } from "./CalculatorHelpers.js";
 import "./calculators.css";
 import ToolBar from "./ToolBar.js";
@@ -31,7 +31,11 @@ export default function MatrixMultiplicationCalculator({ setResult }) {
     axios
       .post("http://localhost:9000/matrix-multiply", { matrices })
       .then((response) => {
-        setResult(response.data);
+        setResult({
+          rows: response.data.rows,
+          columns: response.data.columns,
+          matrix: response.data.imatrix,
+        });
       })
       .catch((error) => {
         console.log(error.response);

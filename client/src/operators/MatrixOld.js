@@ -19,7 +19,10 @@ export default function Matrix({ matrices, matrixNumber, setMatrices, type }) {
   };
 
   return (
-    <div className="matrix" style={type === "result" ? { borderColor: "#4cd137" } : {}}>
+    <div
+      className="matrix"
+      style={type === "result" ? { borderColor: "#4cd137" } : {}}
+    >
       {matrices[matrixNumber].matrix.map((row, r) => {
         return (
           <div className="matrix-row" key={`cells[${r}]`}>
@@ -28,7 +31,9 @@ export default function Matrix({ matrices, matrixNumber, setMatrices, type }) {
                 <div
                   className="matrix-cell"
                   key={`cell[${r}][${c}]`}
-                  style={type === "result" ? { backgroundColor: "#4cd137" } : {}}
+                  style={
+                    type === "result" ? { backgroundColor: "#4cd137" } : {}
+                  }
                 >
                   <input
                     className="matrix-cell-input"
@@ -38,9 +43,12 @@ export default function Matrix({ matrices, matrixNumber, setMatrices, type }) {
                       if (type !== "result") updateEntry(e.target.value, r, c);
                     }}
                     onBlur={(e) => {
-                      if (type !== "result") ensureCellContainsNumber(e.target.value, r, c);
+                      if (type !== "result")
+                        ensureCellContainsNumber(e.target.value, r, c);
                     }}
-                    style={type === "result" ? { backgroundColor: "#44bd32" } : {}}
+                    style={
+                      type === "result" ? { backgroundColor: "#44bd32" } : {}
+                    }
                     maxLength="3"
                   ></input>
                 </div>

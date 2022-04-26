@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Matrix from "./Matrix.js";
+import Matrix from "./Matrix";
 import { modifyMatrices } from "./CalculatorHelpers.js";
 import ToolBar from "./ToolBar.js";
 import "./calculators.css";
@@ -31,7 +31,11 @@ export default function AdditionCalculator({ setResult }) {
     axios
       .post("http://localhost:9000/add", { matrices })
       .then((response) => {
-        setResult(response.data);
+        setResult({
+          rows: response.data.rows,
+          columns: response.data.columns,
+          matrix: response.data.imatrix,
+        });
       })
       .catch((error) => {
         console.log(error.response);
@@ -41,16 +45,32 @@ export default function AdditionCalculator({ setResult }) {
   return (
     <div className="calculator">
       <div className="matrices">
-        <Matrix matrices={matrices} matrixNumber={0} setMatrices={setMatrices}></Matrix>
+        <Matrix
+          matrices={matrices}
+          matrixNumber={0}
+          setMatrices={setMatrices}
+        ></Matrix>
         <p className="operator-symbol">+</p>
-        <Matrix matrices={matrices} matrixNumber={1} setMatrices={setMatrices}></Matrix>
+        <Matrix
+          matrices={matrices}
+          matrixNumber={1}
+          setMatrices={setMatrices}
+        ></Matrix>
       </div>
       <ToolBar
         matrix={matrices[0]}
-        addRow={() => modifyMatrices("rows", "add", [0, 1], matrices, setMatrices)}
-        subRow={() => modifyMatrices("rows", "sub", [0, 1], matrices, setMatrices)}
-        addColumn={() => modifyMatrices("columns", "add", [0, 1], matrices, setMatrices)}
-        subColumn={() => modifyMatrices("columns", "sub", [0, 1], matrices, setMatrices)}
+        addRow={() =>
+          modifyMatrices("rows", "add", [0, 1], matrices, setMatrices)
+        }
+        subRow={() =>
+          modifyMatrices("rows", "sub", [0, 1], matrices, setMatrices)
+        }
+        addColumn={() =>
+          modifyMatrices("columns", "add", [0, 1], matrices, setMatrices)
+        }
+        subColumn={() =>
+          modifyMatrices("columns", "sub", [0, 1], matrices, setMatrices)
+        }
       ></ToolBar>
     </div>
   );

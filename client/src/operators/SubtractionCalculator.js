@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Matrix from "./Matrix.js";
+import Matrix from "./Matrix";
 import { modifyMatrices } from "./CalculatorHelpers.js";
 import ToolBar from "./ToolBar.js";
 import "./calculators.css";
@@ -31,7 +31,11 @@ export default function SubtractionCalculator({ setResult }) {
     axios
       .post("http://localhost:9000/subtract", { matrices })
       .then((response) => {
-        setResult(response.data);
+        setResult({
+          rows: response.data.rows,
+          columns: response.data.columns,
+          matrix: response.data.imatrix,
+        });
       })
       .catch((error) => {
         console.log(error.response);

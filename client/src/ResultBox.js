@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Matrix from "./operators/Matrix.js";
+import Matrix from "./operators/Matrix";
 import "./ResultBox.css";
 
 export default function ResultBox(props) {
