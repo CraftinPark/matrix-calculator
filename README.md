@@ -17,4 +17,4 @@ Matrix calculator
 - Real-time calculation
 - Robust to Errors
 
-![matrix-calculator](matrixcalculator.gif)
+![matrix-calculator](matrixcalculator1.gif)
