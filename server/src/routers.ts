@@ -1,6 +1,6 @@
-import MatrixCalculator from "./MatrixCalculator";
+import MatrixCalculator from "./controller/MatrixCalculator";
 import { Request, Response } from "express";
-import Matrix from "./Matrix";
+import Matrix from "./controller/utils/Matrix";
 
 export function addHandler(req: Request, res: Response) {
   try {

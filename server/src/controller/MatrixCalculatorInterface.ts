@@ -1,4 +1,4 @@
-import Matrix from "./Matrix";
+import Matrix from "./utils/Matrix";
 
 export interface MatrixCalculatorInterface {
   add(m1: Matrix, m2: Matrix): Matrix | Error;

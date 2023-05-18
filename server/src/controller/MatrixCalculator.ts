@@ -1,6 +1,6 @@
-import Matrix from "./Matrix";
+import Matrix from "./utils/Matrix";
 import { MatrixCalculatorInterface } from "./MatrixCalculatorInterface";
-import FractionOperator from "./FractionOperator";
+import FractionOperator from "./utils/FractionOperator";
 
 export default class MatrixCalculator implements MatrixCalculatorInterface {
   private fop: FractionOperator;
@@ -83,19 +83,9 @@ export default class MatrixCalculator implements MatrixCalculatorInterface {
       this.echelonize(m, m.rows - rowsLeft, m.columns - columnsLeft);
       rowsLeft--;
       columnsLeft--;
+      console.log(m);
     }
     m.fillIntMatrix();
-    console.log(m);
-
-    if (!(m instanceof Error)) {
-      for (let r = 0; r < m.rows; r++) {
-        for (let c = 0; c < m.columns; c++) {
-          process.stdout.write(`${m.fmatrix[r][c].numerator}/${m.fmatrix[r][c].denominator}, `);
-        }
-        console.log("\n");
-      }
-    }
-
     return m;
   }
 
